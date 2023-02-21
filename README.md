@@ -1,1 +1,1 @@
-# "Uber eats Clone" project
+# "Medium Clone" project
