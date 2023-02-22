@@ -19,7 +19,17 @@ const handleValidationErrors = (req, _res, next) => {
   next();
 };
 
+function validateQueryParams(data) {
+  const errors = [];
+  let { page, size } = data;
+
+  if (parseInt(page) < 1 || parseInt(page) > 10 ) errors.push(["page", "Page must be greater than or equal to 1"]);
+  if (parseInt(size) < 1 || parseInt(size) > 20) errors.push(["size", "Size must be greater than or equal to 1"]);
+
+  return errors;
+}
+
 
 module.exports = {
-  handleValidationErrors
+  handleValidationErrors, validateQueryParams
 };
