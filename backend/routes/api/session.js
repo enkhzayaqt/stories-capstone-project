@@ -37,8 +37,7 @@ router.post('/', validateLogin, async (req, res, next) => {
 
   return res.json({
     'id': user.id,
-    'firstName': user.firstName,
-    'lastName': user.lastName,
+    'name': user.name,
     'email': user.email,
     'username': user.username,
     token
@@ -52,6 +51,7 @@ router.delete('/', (_req, res) => {
   return res.json({ message: 'success' });
 }
 );
+
 
 // Get the Current User
 router.get('/', restoreUser, requireAuth, (req, res) => {
