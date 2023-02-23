@@ -1,7 +1,7 @@
 const express = require('express');
 const { Story, User } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
-const { validateQueryParams } = require('../../utils/validation')
+const { validateQueryParams, validateNewStory } = require('../../utils/validation')
 const { Op } = require('sequelize');
 const router = express.Router();
 
@@ -91,7 +91,7 @@ router.put('/:storyId', requireAuth, async (req, res) => {
             })
         }
 
-        const errors = validateNewSpot(req.body);
+        const errors = validateNewStory(req.body);
         if (errors.length === 0) {
             const { title, body, image } = req.body;
             story.title = title;
@@ -120,7 +120,7 @@ router.put('/:storyId', requireAuth, async (req, res) => {
     })
 });
 
-// Create a STory
+// Create a Story
 router.post('/', requireAuth, async (req, res) => {
 
     const errors = validateNewSpot(req.body);
