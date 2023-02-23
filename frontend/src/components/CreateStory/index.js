@@ -15,6 +15,7 @@ const CreateStory = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (validate()) {
             const newStory = {
                 userId: user.id,
@@ -22,7 +23,6 @@ const CreateStory = () => {
                 body,
                 image
             };
-
             const createdStory = await dispatch(createStoryThunk(newStory));
             history.push(`/stories/${createdStory.id}`)
         }
@@ -32,6 +32,7 @@ const CreateStory = () => {
         const errors = [];
         if (title?.length === 0) errors.push("Please enter a title");
         if (body?.length === 0) errors.push("Please enter a body");
+        if (image?.length === 0) errors.push("Please enter a image url");
         setErrors(errors);
         if (errors.length > 0) return false;
         else return true;
