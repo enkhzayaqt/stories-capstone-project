@@ -1,7 +1,7 @@
 const express = require('express');
 const { Story, User } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
-const { validateQueryParams, validateNewStory } = require('../../utils/validation')
+const { validateQueryParams } = require('../../utils/validation')
 const { Op } = require('sequelize');
 const router = express.Router();
 
@@ -123,9 +123,8 @@ router.put('/:storyId', requireAuth, async (req, res) => {
 // Create a Story
 router.post('/', requireAuth, async (req, res) => {
 
-    const errors = validateNewSpot(req.body);
-    if (errors.length === 0) {
-        const { title, body, image } = req.body;
+    const { title, body, image } = req.body;
+    console.log('req.body',req.body)
         const story = await Story.create({
             userId: req.user.id,
             title,
@@ -135,18 +134,6 @@ router.post('/', requireAuth, async (req, res) => {
         story.save();
         res.status(201);
         res.json(story)
-    } else {
-        res.status(400);
-        const errResponse = {};
-        errors.forEach(er => {
-            errResponse[er[0]] = er[1];
-        });
-
-        res.json({
-            message: 'Validation Error',
-            errors: errResponse
-        })
-    }
 })
 
 // Delete a Story

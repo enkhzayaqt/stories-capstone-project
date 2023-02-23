@@ -29,13 +29,7 @@ function validateQueryParams(data) {
   return errors;
 }
 
-function validateNewStory(data) {
-  const errors = [];
-  if (!data.title) errors.push(["title", "Title is required"]);
-  if (!data.body) errors.push(["body", "Body is required"]);
-  return errors;
-}
 
 module.exports = {
-  handleValidationErrors, validateQueryParams, validateNewStory
+  handleValidationErrors, validateQueryParams
 };
