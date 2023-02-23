@@ -8,17 +8,18 @@ const EditStory = () => {
     const history = useHistory();
     const { storyId } = useParams();
     const user = useSelector((state) => state?.session?.user);
-    const oldStory = useSelector((state) => state.story);
+    const oldStory = useSelector((state) => state?.stories.storyDetails);
 
-    const [title, setTitle] = useState(oldStory.storyDetails.title);
-    const [body, setBody] = useState(oldStory.storyDetails.body);
-    const [image, setImage] = useState(oldStory.storyDetails.image);
+    const [title, setTitle] = useState(oldStory.title);
+    const [body, setBody] = useState(oldStory.body);
+    const [image, setImage] = useState(oldStory.image);
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validate()) {
             const newStory = {
+                id: storyId,
                 userId: user.id,
                 title,
                 body,
@@ -48,7 +49,7 @@ const EditStory = () => {
     };
 
     return (
-        <div className="edit-spot-container">
+        <div className="edit-story-container">
             <button className="btn btn-blue" onClick={() => { history.push(`/stories/${storyId}`) }}>
                 <i className="fa-solid fa-chevron-left"></i><span style={{ marginLeft: 10 }}>Back</span>
             </button>
@@ -70,6 +71,14 @@ const EditStory = () => {
                         placeholder="body"
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
+                    />
+                </label>
+                <label> Image:
+                    <input className="input"
+                        type="text"
+                        placeholder="image"
+                        value={image}
+                        onChange={(e) => setImage(e.target.value)}
                     />
                 </label>
 
