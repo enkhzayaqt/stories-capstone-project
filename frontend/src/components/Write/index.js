@@ -1,12 +1,17 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Write() {
+    const sessionUser = useSelector(state => state.session.user);
+
     return (
         <div >
-            <Link to='/stories/new'>
+            {sessionUser && (
+                <Link to='/stories/new'>
                 <i class="fa-solid fa-pen-to-square"></i>
                 <span>Write</span>
             </Link>
+            )}
         </div>
     )
 }
