@@ -91,8 +91,6 @@ router.put('/:storyId', requireAuth, async (req, res) => {
             })
         }
 
-        const errors = validateNewStory(req.body);
-        if (errors.length === 0) {
             const { title, body, image } = req.body;
             story.title = title;
             story.body = body;
@@ -100,17 +98,6 @@ router.put('/:storyId', requireAuth, async (req, res) => {
             story.save();
             res.status(201);
             res.json(story)
-        } else {
-            res.status(400);
-            const errResponse = {};
-            errors.forEach(er => {
-                errResponse[er[0]] = er[1];
-            });
-            res.json({
-                message: 'Validation Error',
-                errors: errResponse
-            })
-        }
     }
 
     res.status(404)
@@ -124,7 +111,6 @@ router.put('/:storyId', requireAuth, async (req, res) => {
 router.post('/', requireAuth, async (req, res) => {
 
     const { title, body, image } = req.body;
-    console.log('req.body',req.body)
         const story = await Story.create({
             userId: req.user.id,
             title,

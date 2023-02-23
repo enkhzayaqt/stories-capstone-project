@@ -43,6 +43,7 @@ const EditStory = () => {
         const errors = [];
         if (title?.length === 0) errors.push("Please enter a title");
         if (body?.length === 0) errors.push("Please enter a body");
+        if (image?.length === 0) errors.push("Please enter a image url");
         setErrors(errors);
         if (errors.length > 0) return false;
         else return true;
