@@ -2,11 +2,9 @@ import { csrfFetch } from "./csrf";
 
 const GET_STORIES = "stories/GET_STORIES";
 const GET_STORYDETAILS = "stories/GET_STORYDETAILS";
-const CREATE = 'stories/CREATE_STORY';
+const CREATE = 'stories/CREATE';
 const DELETE = 'stories/DELETE';
 const EDIT = "stories/EDIT";
-const ADD_IMAGE = 'stories/ADD_IMAGE';
-
 
 
 // Action creators
@@ -28,11 +26,6 @@ export const createStory = (story) => ({
 export const deleteStory = (storyId) => ({
     type: DELETE,
     storyId
-})
-
-export const addImage = (image) => ({
-    type: ADD_IMAGE,
-    image
 })
 
 export const editStory = (story) => ({
@@ -98,19 +91,6 @@ export const editStoryThunk = (input, storyId) => async (dispatch) => {
 }
 
 
-export const addImageThunk = (input, storyId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/stories/${storyId}/images`, {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input)
-    })
-    if (response.ok) {
-        const image = await response.json();
-        dispatch(addImage(image));
-        return image;
-    }
-}
-
 // Initial State
 const initialState = {
     allStories: {},
@@ -154,14 +134,6 @@ export default function storiesReducer(state = initialState, action) {
                 [action.story.id]: action.story
             }
         }
-        case ADD_IMAGE:
-            return {
-                ...state,
-                [action.image.id]: {
-                    ...action.image,
-                    image: action.image.url
-                }
-            }
         default:
             return state;
     }

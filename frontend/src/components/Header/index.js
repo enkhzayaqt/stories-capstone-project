@@ -4,7 +4,7 @@ function Header() {
     return (
         <div id='header-container'>
             <Link id='logo' to='/'>
-                <span id='span-logo'>Stories</span>
+                <span id='span-logo'>STORIES</span>
             </Link>
         </div>
     )

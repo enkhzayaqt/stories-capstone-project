@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addImageThunk, createStoryThunk } from "../../store/stories";
+import { createStoryThunk, getStoryDetailsThunk } from "../../store/stories";
 
 const CreateStory = () => {
     const dispatch = useDispatch();
@@ -24,15 +24,7 @@ const CreateStory = () => {
             };
 
             const createdStory = await dispatch(createStoryThunk(newStory));
-
-            if (createdStory && image) {
-                const image = {
-                    url: image,
-                }
-
-                await dispatch(addImageThunk(image, createdStory.id));
-                history.push(`/stories/${createdStory.id}`)
-            }
+            history.push(`/stories/${createdStory.id}`)
         }
     }
 

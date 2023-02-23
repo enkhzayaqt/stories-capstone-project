@@ -79,7 +79,7 @@ router.get('/:storyId', async (req, res) => {
 
 // Edit a Story
 router.put('/:storyId', requireAuth, async (req, res) => {
-    const story = await Spot.findByPk(req.params.storyId);
+    const story = await Story.findByPk(req.params.storyId);
 
     if (story) {
         //Authorization

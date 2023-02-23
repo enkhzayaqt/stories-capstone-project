@@ -236,7 +236,7 @@ button[disabled] {
 #span-logo {
     display: flex;
     align-items: center;
-    color: #FF385C;
+    color: black;
     font-weight: 700;
     font-size: 20px;
 }
