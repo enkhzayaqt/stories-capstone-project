@@ -6,7 +6,6 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import DemoUserLogin from '../DemoUserModal'
-import './Navigation.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -54,7 +53,6 @@ function ProfileButton({ user }) {
             <li className="info-li"><i className="far fa-face-smile" /> {sessionUser.name}</li>
             <li className="info-li"><i className="far fa-envelope" /> {sessionUser.email}</li>
             <li className="info-li section-li"></li>
-            {/* <li onClick={(e) => createSpot(e)}><i className="far fa-plus" /> Create spot</li> */}
             <li onClick={logout}><i className="fa-solid fa-right-from-bracket"></i> Log Out</li>
           </>
         ) : (

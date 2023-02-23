@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import ProfileButton from '../Navigation/ProfileButton';
-import "./DropDown.css";
 
 
 function Dropdown() {
@@ -20,7 +19,6 @@ function Dropdown() {
             </div>
         </div>
     )
-
 }
 
 export default Dropdown;
