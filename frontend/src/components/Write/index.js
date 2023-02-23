@@ -4,7 +4,8 @@ function Write() {
     return (
         <div >
             <Link to='/stories/new'>
-                <i className="fa-light fa-pen-to-square">Write</i>
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>Write</span>
             </Link>
         </div>
     )
