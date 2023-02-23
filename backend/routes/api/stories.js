@@ -1,5 +1,5 @@
 const express = require('express');
-const { Story, User } = require('../../db/models');
+const { Story, User, Comment } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { validateQueryParams } = require('../../utils/validation')
 const { Op } = require('sequelize');
@@ -22,6 +22,11 @@ router.get('/', async (req, res) => {
         }
 
         const stories = await Story.findAll({
+            include: [
+                {
+                    model: Comment
+                }
+            ],
             ...pagination
         })
 
@@ -29,6 +34,7 @@ router.get('/', async (req, res) => {
         stories.forEach(story => {
             storyList.push(story.toJSON())
         });
+
 
         return res.json({
             Stories: storyList,
