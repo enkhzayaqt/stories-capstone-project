@@ -34,7 +34,7 @@ const StoryDetails = () => {
     }
 
     return (
-        <div className="spot-details-container">
+        <div className="story-details-container">
             <div className="back-edit-delete-btn-container">
                 <button className="btn btn-blue" onClick={() => history.push("/")}>
                     <i className="fa-solid fa-chevron-left"></i><span style={{ marginLeft: 10 }}>Back</span>
@@ -52,15 +52,16 @@ const StoryDetails = () => {
             </div>
             <h2>{title}</h2>
             <div className="spot-image-container">
-                {image && image.length > 0 &&
-                    <img className="spot-image" src={image[0].url} alt="Image" />
+                {image &&
+                    <img className="spot-image" src={image} alt="Image" />
                 }
             </div>
             <div>{body}</div>
-            <h2>
-                Writen by {userId}
-            </h2>
-        </div >
+            <br/>
+            <div>
+                Written by {user?.name}
+            </div>
+        </div>
     );
 };
 

@@ -344,3 +344,14 @@ a.story-thumb-link {
     justify-content: space-between;
     align-items: baseline;
 }
+
+.story-details-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px 45px;
+    width: 960px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
