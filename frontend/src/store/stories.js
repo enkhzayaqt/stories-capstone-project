@@ -2,7 +2,11 @@ import { csrfFetch } from "./csrf";
 
 const GET_STORIES = "stories/GET_STORIES";
 const GET_STORYDETAILS = "stories/GET_STORYDETAILS";
-const CREATE_STORY = 'stories/CREATE_STORY';
+const CREATE = 'stories/CREATE_STORY';
+const DELETE = 'stories/DELETE';
+const EDIT = "stories/EDIT";
+const ADD_IMAGE = 'stories/ADD_IMAGE';
+
 
 
 // Action creators
@@ -17,7 +21,22 @@ export const getStoryDetails = (story) => ({
 });
 
 export const createStory = (story) => ({
-    type: CREATE_STORY,
+    type: CREATE,
+    story
+})
+
+export const deleteStory = (storyId) => ({
+    type: DELETE,
+    storyId
+})
+
+export const addImage = (image) => ({
+    type: ADD_IMAGE,
+    image
+})
+
+export const editStory = (story) => ({
+    type: EDIT,
     story
 })
 
@@ -54,6 +73,43 @@ export const createStoryThunk = (userInput) => async (dispatch) => {
     }
 }
 
+export const deleteStoryThunk = (storyId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/stories/${storyId}`, {
+        method: 'DELETE',
+    })
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(deleteStory(data));
+        return data
+    }
+}
+
+export const editStoryThunk = (input, storyId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/stories/${storyId}`, {
+        method: 'PUT',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input)
+    })
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(editStory(data));
+        return data;
+    }
+}
+
+
+export const addImageThunk = (input, storyId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/stories/${storyId}/images`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input)
+    })
+    if (response.ok) {
+        const image = await response.json();
+        dispatch(addImage(image));
+        return image;
+    }
+}
 
 // Initial State
 const initialState = {
@@ -74,7 +130,7 @@ export default function storiesReducer(state = initialState, action) {
                 allStories: newState
             }
         }
-        case CREATE_STORY:
+        case CREATE:
             return {
                 ...state,
                 [action.story.id]: action.story
@@ -85,6 +141,27 @@ export default function storiesReducer(state = initialState, action) {
                 storyDetails: action.story,
             };
         }
+        case DELETE: {
+            const newState = {
+                ...state
+            }
+            delete newState.allStories[action.storyId]
+            return newState
+        }
+        case EDIT: {
+            return {
+                ...state,
+                [action.story.id]: action.story
+            }
+        }
+        case ADD_IMAGE:
+            return {
+                ...state,
+                [action.image.id]: {
+                    ...action.image,
+                    image: action.image.url
+                }
+            }
         default:
             return state;
     }

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { getStoriesThunk } from "../../store/stories";
 import { useSelector, useDispatch } from "react-redux";
 import Story from "../Story";
-import "./stories.css";
 
 const Stories = () => {
     const dispatch = useDispatch();
@@ -15,7 +14,7 @@ const Stories = () => {
 
 
     return (
-        <div className="spot-container-root">
+        <div className="story-container-root">
             {
                 stories.map((story, idx) => {
                     return <Story data={story} key={idx} />

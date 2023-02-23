@@ -1,31 +1,24 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import "./story.css";
 
 const Story = (props) => {
-    const user = useSelector((state) => state.session.user);
-
-    const { id, title, body } = props.data;
+    const { id, title, body, image } = props.data;
 
     return (
-        <div className="spot-container">
-            <a href={`/stories/${id}`} className="spot-thumb-link">
-                {/* <div className="thumb-img-container">
-                    {previewImage !== 'no image yet' ?
-                        <img src={previewImage} className="thumb-img" alt="Spot Image" />
+        <div className="story-container">
+            <a href={`/stories/${id}`} className="story-thumb-link">
+                <div className="thumb-img-container">
+                    {image !== 'no image yet' ?
+                        <img src={image} className="thumb-img" alt="Image" />
                         :
                         <div className="no-image-container"><span>No Image</span></div>
                     }
-                </div> */}
-                <div className="address-review-container">
+                </div>
+                <div className="title-body-container">
                     <div className="title">{title}</div>
                 </div>
-
-                <div className="desc">{body}</div>
+                <div className="body">{body}</div>
             </a>
-
         </div>
-
     );
 };
 
