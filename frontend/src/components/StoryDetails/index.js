@@ -52,7 +52,7 @@ const StoryDetails = () => {
 
     return (
         <div className="story-details-container">
-            <div>
+            <div className="story-detail-buttons-container">
                 <button className="btn btn-blue" onClick={() => history.push("/")}>
                     <i className="fa-solid fa-chevron-left"></i><span style={{ marginLeft: 10 }}>Back</span>
                 </button>
@@ -67,7 +67,9 @@ const StoryDetails = () => {
                     </div>
                 }
             </div>
+            <div className="story-detail-title">
             <h2>{title}</h2>
+            </div>
             <div className="spot-image-container">
                 {image &&
                     <img className="spot-image" src={image} alt="Image" />

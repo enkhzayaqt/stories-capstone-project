@@ -301,7 +301,7 @@ a.story-thumb-link {
 
 .story-details-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     gap: 20px 45px;
@@ -438,4 +438,9 @@ a.story-thumb-link {
 
 .comment-item-desc {
     padding-top: 5px;
+}
+
+.story-detail-buttons-container {
+    display: flex;
+    flex-direction: row;
 }
