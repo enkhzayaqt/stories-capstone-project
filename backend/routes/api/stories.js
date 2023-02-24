@@ -83,6 +83,102 @@ router.get('/:storyId', async (req, res) => {
     return res.json(editStory)
 })
 
+// Get all Comments by a Story's id
+router.get('/:storyId/comments', requireAuth, async (req, res) => {
+    const story = await Story.findByPk(req.params.storyId);
+    if (!story) {
+        res.status(404)
+        res.json({
+            message: "Story couldn't be found",
+            statusCode: 404
+        })
+    }
+    const comment = await Comment.findAll({
+        where: {
+            storyId: req.params.storyId
+        },
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'name']
+            }
+        ]
+    });
+    return res.json({
+        comment
+    })
+})
+
+
+// Create a Story
+router.post('/', requireAuth, async (req, res) => {
+
+    const { title, body, image } = req.body;
+        const story = await Story.create({
+            userId: req.user.id,
+            title,
+            body,
+            image,
+        })
+        story.save();
+        res.status(201);
+        res.json(story)
+})
+
+// Create a Comment for a Stpry based on the Story's id
+router.post('/:storyId/comments', requireAuth, async (req, res) => {
+    const story = await Story.findByPk(req.params.storyId);
+    if (!story) {
+        res.status(404)
+        res.json({
+            message: "story couldn't be found",
+            statusCode: 404
+        })
+    }
+    const comment = await Comment.findOne({
+        where: {
+            storyId: req.params.storyId,
+            userId: req.user.id
+        }
+    })
+    if (comment) {
+        res.status(403)
+        res.json({
+            message: "User already has a review for this story",
+            statusCode: 403
+        })
+    } else {
+        // const errors = validateNewReview(req.body);
+        // if (errors.length === 0) {
+
+            const { comment } = req.body;
+            const storyComment = await Comment.create({
+                storyId: req.params.storyId,
+                userId: req.user.id,
+                comment
+            })
+            storyComment.save();
+            res.status(201);
+            res.json(storyComment)
+        // } else {
+        //     res.status(400);
+        //     const errResponse = {};
+        //     errors.forEach(er => {
+        //         errResponse[er[0]] = er[1];
+        //     });
+
+        //     res.json({
+        //         message: 'Validation Error',
+        //         errors: errResponse
+        //     })
+        // }
+    }
+
+
+
+})
+
+
 // Edit a Story
 router.put('/:storyId', requireAuth, async (req, res) => {
     const story = await Story.findByPk(req.params.storyId);
@@ -113,21 +209,6 @@ router.put('/:storyId', requireAuth, async (req, res) => {
     })
 });
 
-// Create a Story
-router.post('/', requireAuth, async (req, res) => {
-
-    const { title, body, image } = req.body;
-        const story = await Story.create({
-            userId: req.user.id,
-            title,
-            body,
-            image,
-        })
-        story.save();
-        res.status(201);
-        res.json(story)
-})
-
 // Delete a Story
 router.delete('/:storyId', requireAuth, async (req, res) => {
     const story = await Story.findByPk(req.params.storyId);
@@ -154,4 +235,6 @@ router.delete('/:storyId', requireAuth, async (req, res) => {
         })
     }
 })
+
+
 module.exports = router;

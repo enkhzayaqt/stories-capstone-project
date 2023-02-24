@@ -3,7 +3,7 @@ import * as commentActions from "../../store/comment";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 
-function CommentFormModal({ storyid, callbackClose }) {
+function CommentFormModal({ storyId, callbackClose }) {
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const [errors, setErrors] = useState([]);
@@ -17,7 +17,7 @@ function CommentFormModal({ storyid, callbackClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return dispatch(commentActions.addCommentThunk({ comment }, storyid))
+    return dispatch(commentActions.addCommentThunk({ comment }, storyId))
       .then(() => {
         callbackClose();
         closeModal();
