@@ -8,7 +8,7 @@ function Write() {
         <div >
             {sessionUser && (
                 <Link to='/stories/new'>
-                <i class="fa-solid fa-pen-to-square"></i>
+                <i className="fa-solid fa-pen-to-square"></i>
                 <span>Write</span>
             </Link>
             )}

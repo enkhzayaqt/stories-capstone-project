@@ -96,25 +96,6 @@ button[disabled] {
     color: red;
 }
 
-.spot-details-header {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
-}
-
-.fa-star {
-    color: #f4d300
-}
-
-.spot-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 16px;
-    border-radius: 8px;
-    width: 290px;
-    height: 300px;
-}
-
 .create-story-content {
     display: flex;
 }
@@ -127,27 +108,6 @@ button[disabled] {
 .create-story-container {
     width: 960px;
     margin: 30px auto 80px auto;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    width: 520px;
-    border: 1px red solid;
-}
-
-.demo-button {
-    border: none;
-    background-color: #FFF;
-    padding: 15px 185px 15px 15px;
-    font-size: .8rem;
-    width: 250px;
-    text-align: left;
-    white-space: nowrap;
-}
-.demo-button:hover{
-    background-color: #F6F6F6;
-    cursor: pointer;
 }
 
 #dropdownicon {
@@ -225,12 +185,6 @@ button[disabled] {
 .edit-story-container {
     width: 960px;
     margin: 30px auto 80px auto;
-}
-
-#logo-img {
-    width: 50px;
-    padding: 10px;
-    padding-left: 0;
 }
 
 #span-logo {
@@ -354,4 +308,134 @@ a.story-thumb-link {
     width: 960px;
     margin: 0 auto;
     margin-bottom: 80px;
+}
+
+.btn-delete-edit-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-right: 30px;
+}
+
+.review-header h4 {
+    margin: 0
+}
+
+.back-edit-delete-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.write-review-modal {
+    list-style: none;
+}
+
+.edit-delete-review-btn-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.spot-details-container {
+    width: 960px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.spot-image-container {
+    margin-bottom: 30px;
+}
+
+.spot-image {
+    border-radius: 10px;
+    width: 550px;
+}
+
+.spot-description-container {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.spot-description {
+    width: 66%;
+    padding-right: 30px;
+}
+
+.spot-price {
+    width: 34%;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}
+
+.spot-price h2 {
+    display: inline;
+}
+
+.comment-container .review-body {
+    list-style: none;
+    margin-top: 30px;
+    display: flex;
+}
+
+.comment-item {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-right: 30px;
+}
+
+.comment-item-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.comment-item-header .title {
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-item-header .title .avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(204, 204, 204);
+    text-align: center;
+    line-height: 2.4;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.comment-item-header .titlebody {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-item-header .title .name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.comment-item-header .title .date {
+    font-size: 14px;
+    color: #333;
+}
+
+.comment-item-desc {
+    padding-top: 5px;
 }
