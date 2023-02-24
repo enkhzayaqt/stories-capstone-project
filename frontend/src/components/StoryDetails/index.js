@@ -13,7 +13,7 @@ const StoryDetails = () => {
     const storyId = routeParams.id;
     const dispatch = useDispatch();
     const storyDetails = useSelector((state) => state.stories.storyDetails);
-    const storyComments = useSelector((state) => state.storyComments);
+    const storyComments = useSelector((state) => state.comments.storyComments.comment);
     const user = useSelector((state) => state.session.user);
     const history = useHistory();
     const { title, body, image, userId } = storyDetails;
@@ -28,6 +28,8 @@ const StoryDetails = () => {
         e.preventDefault();
         history.push(`/stories/${storyId}/edit`);
         dispatch(getStoryDetailsThunk(storyId));
+        dispatch(getCommentsThunk(storyId));
+
     }
 
     const deleteComment = (commentId) => {
@@ -39,11 +41,13 @@ const StoryDetails = () => {
 
     useEffect(() => {
         dispatch(getStoryDetailsThunk(storyId));
+        dispatch(getCommentsThunk(storyId));
     }, []);
 
 
     const OnModalClose = () => {
         dispatch(getStoryDetailsThunk(storyId));
+        dispatch(getCommentsThunk(storyId));
     }
 
     return (

@@ -83,6 +83,32 @@ router.get('/:storyId', async (req, res) => {
     return res.json(editStory)
 })
 
+// Get all Comments by a Story's id
+router.get('/:storyId/comments', requireAuth, async (req, res) => {
+    const story = await Story.findByPk(req.params.storyId);
+    if (!story) {
+        res.status(404)
+        res.json({
+            message: "Story couldn't be found",
+            statusCode: 404
+        })
+    }
+    const comment = await Comment.findAll({
+        where: {
+            storyId: req.params.storyId
+        },
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'name']
+            }
+        ]
+    });
+    return res.json({
+        comment
+    })
+})
+
 // Edit a Story
 router.put('/:storyId', requireAuth, async (req, res) => {
     const story = await Story.findByPk(req.params.storyId);
