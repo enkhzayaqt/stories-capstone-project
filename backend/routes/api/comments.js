@@ -48,10 +48,9 @@ router.put('/:commentId', requireAuth, async (req, res) => {
 // Delete a Comment
 router.delete('/:commentId', requireAuth, async (req, res) => {
     const comment = await Comment.findByPk(req.params.commentId);
-
     if (comment) {
          //Authorization
-         if (req.user.id !== review.userId) {
+         if (req.user.id !== comment.userId) {
             res.status(403)
             res.json({
                 message: "Forbidden",
