@@ -5,12 +5,12 @@ function Write() {
     const sessionUser = useSelector(state => state.session.user);
 
     return (
-        <div >
+        <div className="write-story-button">
             {sessionUser && (
                 <Link to='/stories/new'>
-                <i className="fa-solid fa-pen-to-square"></i>
-                <span>Write</span>
-            </Link>
+                    <i className="fa-solid fa-pen-to-square"></i>
+                    <span>Write</span>
+                </Link>
             )}
         </div>
     )
