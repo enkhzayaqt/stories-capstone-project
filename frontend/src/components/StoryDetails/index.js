@@ -7,7 +7,6 @@ import EditCommentModal from '../EditCommentModal';
 import CommentFormModal from '../CommentFormModal';
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 
-
 const StoryDetails = () => {
     const routeParams = useParams();
     const storyId = routeParams.id;
@@ -52,23 +51,30 @@ const StoryDetails = () => {
 
     return (
         <div className="story-details-container">
-            <div className="story-detail-buttons-container">
-                <button className="btn btn-blue" onClick={() => history.push("/")}>
-                    <i className="fa-solid fa-chevron-left"></i><span style={{ marginLeft: 10 }}>Back</span>
-                </button>
-                {user && user?.id === userId &&
+             <div className="story-detail-title">
+                <div className="story-title">
+                    <h2>{title}</h2>
+                </div>
+                <div>
+                    {user && user?.id === userId &&
                     <div className="btn-delete-edit-container">
-                        <button className="btn btn-blue" style={{ marginRight: 8 }} onClick={(e) => editStory(e)}>
-                            <i className="fa-solid fa-pen-to-square"></i> Edit
+                            <button
+                                className="btn"
+                                style={{ marginRight: 8 }}
+                                onClick={(e) => editStory(e)}>
+                            <i className="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button className="btn btn-primary" onClick={(e) => deleteStory(e)}>
-                            <i className="fa-solid fa-trash"></i> Delete
+                            <button
+                                className="btn"
+                                onClick={(e) => deleteStory(e)}>
+                            <i className="fa-solid fa-trash"></i>
                         </button>
                     </div>
                 }
+                </div>
             </div>
-            <div className="story-detail-title">
-            <h2>{title}</h2>
+            <div>
+                Written by {user?.name}
             </div>
             <div className="spot-image-container">
                 {image &&
@@ -76,10 +82,8 @@ const StoryDetails = () => {
                 }
             </div>
             <div>{body}</div>
-            <br/>
-            <div>
-                Written by {user?.name}
-            </div>
+            <br />
+
             {/* Comment Section */}
             <div>
                 <div className="comment-container">
@@ -116,24 +120,24 @@ const StoryDetails = () => {
                                         </div>
                                         <div className="comment-item-desc">{comment.comment}</div>
                                         <div className="buttons">
-                                                {user?.id == comment.userId &&
-                                                    <div className="edit-delete-review-btn-container">
-                                                        <button className="btn-openmodal btn-blue" style={{
-                                                            marginRight: 5
-                                                        }}>
-                                                            <OpenModalMenuItem
-                                                                itemText="Edit"
-                                                                modalComponent={<EditCommentModal commentId={comment.id} comment={comment.comment} callbackClose={() => OnModalClose()} />}
-                                                            />
+                                            {user?.id == comment.userId &&
+                                                <div className="edit-delete-review-btn-container">
+                                                    <button className="btn" style={{
+                                                        marginRight: 5
+                                                    }}>
+                                                        <OpenModalMenuItem
+                                                            itemText = <i className="fa-solid fa-pen-to-square"></i>
+                                                            modalComponent={<EditCommentModal commentId={comment.id} comment={comment.comment} callbackClose={() => OnModalClose()} />}
+                                                        />
+                                                    </button>
+                                                    <div className="btn-delete-edit-container">
+                                                        <button className="btn" onClick={() => deleteComment(comment.id)}>
+                                                        <i className="fa-solid fa-trash"></i>
                                                         </button>
-                                                        <div className="btn-delete-edit-container">
-                                                            <button className="btn btn-primary" onClick={() => deleteComment(comment.id)}>
-                                                                Delete
-                                                            </button>
-                                                        </div>
                                                     </div>
-                                                }
-                                            </div>
+                                                </div>
+                                            }
+                                        </div>
                                     </div>
                                 )
                             })

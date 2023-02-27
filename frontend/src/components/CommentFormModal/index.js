@@ -9,15 +9,16 @@ function CommentFormModal({ storyId, callbackClose }) {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
-  useEffect(() => {
-    const errors = [];
-    if (comment === "") errors.push("Please enter your comment");
-    setErrors(errors);
-  }, [comment]);
+  // useEffect(() => {
+  //   const errors = [];
+  //   if (comment === "") errors.push("Please enter your comment");
+  //   setErrors(errors);
+  // }, [comment]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return dispatch(commentActions.addCommentThunk({ comment }, storyId))
+    if (validate()) {
+      return dispatch(commentActions.addCommentThunk({ comment }, storyId))
       .then(() => {
         callbackClose();
         closeModal();
@@ -27,7 +28,16 @@ function CommentFormModal({ storyId, callbackClose }) {
         const { message } = data;
         setErrors([message]);
       });
+    }
   };
+
+  const validate = () => {
+    const errors = [];
+    if (comment === "") errors.push("Please enter your comment");
+    setErrors(errors);
+    if (errors.length > 0) return false;
+    else return true;
+  }
 
   return (
     <div className="new-review-container">
@@ -39,7 +49,7 @@ function CommentFormModal({ storyId, callbackClose }) {
           ))}
         </ul>
         <label>
-          Comment
+          Comment:
           <textarea
             className="textarea"
             value={comment}

@@ -83,7 +83,7 @@ const CreateStory = () => {
 
                         <div className="margin-top-10" style={{ float: 'right' }}>
                             <button className="btn btn-blue" style={{ marginRight: 15 }} onClick={(e) => cancel(e)}>Cancel</button>
-                            <button className="btn btn-primary" type="submit">Submit</button>
+                            <button className="btn btn-primary" type="submit">Publish</button>
                         </div>
                     </div>
                 </div>

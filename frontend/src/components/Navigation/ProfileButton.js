@@ -1,4 +1,3 @@
-// frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
@@ -19,6 +18,8 @@ function ProfileButton({ user }) {
     setShowMenu(true);
   };
 
+  const closeMenu = () => setShowMenu(false);
+
   useEffect(() => {
     if (!showMenu) return;
 
@@ -26,6 +27,8 @@ function ProfileButton({ user }) {
       if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
+      setShowMenu(false);
+
     };
 
     document.addEventListener('click', closeMenu);
@@ -33,7 +36,6 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const closeMenu = () => setShowMenu(false);
 
 
   const logout = (e) => {
@@ -42,7 +44,7 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
     <>
