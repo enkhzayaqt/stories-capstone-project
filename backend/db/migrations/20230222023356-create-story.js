@@ -31,6 +31,9 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
+      claps: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

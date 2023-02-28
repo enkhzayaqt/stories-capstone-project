@@ -5,6 +5,7 @@ const GET_STORYDETAILS = "stories/GET_STORYDETAILS";
 const CREATE = 'stories/CREATE';
 const DELETE = 'stories/DELETE';
 const EDIT = "stories/EDIT";
+const INCREMENT = "stories/INCREMENT";
 
 
 // Action creators
@@ -33,6 +34,10 @@ export const editStory = (story) => ({
     story
 })
 
+export const incrementClaps = (story) => ({
+    type: INCREMENT,
+    story
+});
 
 // Thunk
 export const getStoriesThunk = () => async (dispatch) => {
@@ -89,6 +94,19 @@ export const editStoryThunk = (input, storyId) => async (dispatch) => {
         return data;
     }
 }
+
+// export const incrementClapThunk = (claps, storyId) => async (dispatch) => {
+//     const response = await csrfFetch(`/api/stories/${storyId}`, {
+//         method: 'PUT',
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(input)
+//     })
+//     if (response.ok) {
+//         const data = await response.json();
+//         dispatch(editStory(data));
+//         return data;
+//     }
+// }
 
 
 // Initial State

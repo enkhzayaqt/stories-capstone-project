@@ -35,7 +35,12 @@ router.get('/', async (req, res) => {
 
         let storyList = [];
         stories.forEach(story => {
-            storyList.push(story.toJSON())
+            // storyList.push(story.toJSON())
+            const newStory = story.toJSON();
+            const user = User.findByPk(newStory.userId)
+            newStory.user = user;
+            storyList.push(newStory)
+
         });
 
 
