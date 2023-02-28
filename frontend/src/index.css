@@ -524,3 +524,7 @@ a.story-thumb-link {
     width: 180px;
     flex-shrink: 0;
 }
+
+.fa-hands-clapping {
+    margin-right: 5px;
+}
