@@ -25,6 +25,9 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: Comment
+                },
+                {
+                    model: User
                 }
             ],
             ...pagination
