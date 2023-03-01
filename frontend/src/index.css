@@ -511,6 +511,10 @@ a.story-thumb-link {
 
 .story-thumb-body {
     font-size: 14px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .story-thumb-meta {
