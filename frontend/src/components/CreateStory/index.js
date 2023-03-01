@@ -21,7 +21,7 @@ const CreateStory = () => {
                 userId: user.id,
                 title,
                 body,
-                image
+                image: image? image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
             };
             const createdStory = await dispatch(createStoryThunk(newStory));
             history.push(`/stories/${createdStory.id}`)
@@ -34,7 +34,6 @@ const CreateStory = () => {
         if (title?.length < 3 || title?.length > 80) errors.push("Title must be between 3 to 80 characters")
         if (body?.length === 0) errors.push("Please enter a body");
         if (body?.length < 30 || title?.length > 2000) errors.push("Body must be between 30 to 2000 characters")
-        if (image?.length === 0) errors.push("Please enter a image url");
         setErrors(errors);
         if (errors.length > 0) return false;
         else return true;
@@ -62,6 +61,7 @@ const CreateStory = () => {
                                 placeholder="title"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
+                                required
                             />
                         </label>
                         <label> Body:
@@ -70,6 +70,7 @@ const CreateStory = () => {
                                 placeholder="body"
                                 value={body}
                                 onChange={(e) => setBody(e.target.value)}
+                                required
                             />
                         </label>
                         <label> Image:
