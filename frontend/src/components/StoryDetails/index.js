@@ -74,7 +74,7 @@ const StoryDetails = () => {
                 </div>
             </div>
             <div>
-                Written by: { user.name}
+                Written by: { user?.name}
             </div>
             <div className="spot-image-container">
                 {image &&

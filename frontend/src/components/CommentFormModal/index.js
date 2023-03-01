@@ -59,7 +59,7 @@ function CommentFormModal({ storyId, callbackClose }) {
         </label>
         <button type="submit" className="btn btn-primary margin-top-10">Submit</button>
       </form >
-    </div >
+    </div>
   );
 }
 

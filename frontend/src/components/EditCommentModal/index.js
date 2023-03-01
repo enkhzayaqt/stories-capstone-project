@@ -51,7 +51,7 @@ function EditCommentModal(props) {
         <button className="btn btn-blue" onClick={() => closeModal()}>Cancel</button>
         <button type="submit" className="btn btn-primary margin-top-10">Submit</button>
       </form >
-    </div >
+    </div>
   );
 }
 

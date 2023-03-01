@@ -8,28 +8,27 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Stories', {
+    await queryInterface.createTable('Claps', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      storyId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Stories' },
+        onDelete: 'CASCADE'
+      },
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'Users' },
+        onDelete:'CASCADE'
       },
-      title: {
-        type: Sequelize.STRING(250),
-        allowNull: false,
-      },
-      body: {
-        type: Sequelize.STRING(2000),
-        allowNull: false
-      },
-      image: {
-        type: Sequelize.STRING
+      count: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -44,7 +43,7 @@ module.exports = {
     }, options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'Stories';
+    options.tableName = 'Claps'
     await queryInterface.dropTable(options);
   }
 };
