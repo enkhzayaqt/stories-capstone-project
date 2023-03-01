@@ -45,8 +45,9 @@ const Story = (props) => {
                     <span className="clap-total-count">{totalClaps}</span>
                     <a href={`/stories/${id}`} className="story-thumb-link">
                         <i className="fa-regular fa-comment"></i>
+                        {Comments.length}
                     </a>
-                    {Comments.length}
+
                 </div>
             </div>
             <a href={`/stories/${id}`} className="story-thumb-link">

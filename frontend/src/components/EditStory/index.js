@@ -42,7 +42,9 @@ const EditStory = () => {
     const validate = () => {
         const errors = [];
         if (title?.length === 0) errors.push("Please enter a title");
+        if (title?.length < 3 || title?.length > 80) errors.push("Title must be between 3 to 80 characters")
         if (body?.length === 0) errors.push("Please enter a body");
+        if (body?.length < 30 || title?.length > 2000) errors.push("Body must be between 30 to 2000 characters")
         if (image?.length === 0) errors.push("Please enter a image url");
         setErrors(errors);
         if (errors.length > 0) return false;
