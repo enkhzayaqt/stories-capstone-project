@@ -4,7 +4,6 @@ const usersRouter = require('./users.js');
 const storiesRouter = require('./stories.js');
 const commentRouter = require('./comments.js');
 
-
 const { restoreUser } = require('../../utils/auth.js');
 
 router.use(restoreUser);

@@ -6,7 +6,6 @@ const CREATE = 'stories/CREATE';
 const DELETE = 'stories/DELETE';
 const EDIT = "stories/EDIT";
 
-
 // Action creators
 export const getStories = (stories) => ({
     type: GET_STORIES,
@@ -32,7 +31,6 @@ export const editStory = (story) => ({
     type: EDIT,
     story
 })
-
 
 // Thunk
 export const getStoriesThunk = () => async (dispatch) => {
@@ -89,7 +87,6 @@ export const editStoryThunk = (input, storyId) => async (dispatch) => {
         return data;
     }
 }
-
 
 // Initial State
 const initialState = {

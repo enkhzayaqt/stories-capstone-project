@@ -13,9 +13,9 @@ const StoryDetails = () => {
     const dispatch = useDispatch();
     const storyDetails = useSelector((state) => state.stories.storyDetails);
     const storyComments = useSelector((state) => state.comments.storyComments.comment);
-    const user = useSelector((state) => state.session.user);
+    const sessionUser = useSelector((state) => state.session.user);
     const history = useHistory();
-    const { title, body, image, userId } = storyDetails;
+    const { title, body, image, userId, user } = storyDetails;
 
     const deleteStory = () => {
         dispatch(deleteStoryThunk(storyId));
@@ -56,7 +56,7 @@ const StoryDetails = () => {
                     <h2>{title}</h2>
                 </div>
                 <div>
-                    {user && user?.id === userId &&
+                    {sessionUser && sessionUser?.id === userId &&
                     <div className="btn-delete-edit-container">
                             <button
                                 className="btn"
@@ -74,7 +74,7 @@ const StoryDetails = () => {
                 </div>
             </div>
             <div>
-                Written by user id: { userId}
+                Written by: { user?.name}
             </div>
             <div className="spot-image-container">
                 {image &&
@@ -89,7 +89,7 @@ const StoryDetails = () => {
                 <div className="comment-container">
                     <div className="review-header">
                         <div className="write-review-modal">
-                            {user &&
+                            {sessionUser &&
                                 <button className="btn-openmodal btn-white">
                                     <OpenModalMenuItem
                                         itemText="Write a comment"
@@ -120,7 +120,7 @@ const StoryDetails = () => {
                                         </div>
                                         <div className="comment-item-desc">{comment.comment}</div>
                                         <div className="buttons">
-                                            {user?.id == comment.userId &&
+                                            {sessionUser?.id == comment.userId &&
                                                 <div className="edit-delete-review-btn-container">
                                                     <button className="btn" style={{
                                                         marginRight: 5

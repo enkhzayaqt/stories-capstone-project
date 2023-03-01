@@ -1,5 +1,5 @@
 const express = require('express');
-const { Story, User, Comment } = require('../../db/models');
+const { Story, User, Comment, Clap } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { validateQueryParams } = require('../../utils/validation')
 const { Op } = require('sequelize');
@@ -28,6 +28,9 @@ router.get('/', async (req, res) => {
                 },
                 {
                     model: User
+                },
+                {
+                    model: Clap
                 }
             ],
             ...pagination
@@ -35,7 +38,12 @@ router.get('/', async (req, res) => {
 
         let storyList = [];
         stories.forEach(story => {
-            storyList.push(story.toJSON())
+            // storyList.push(story.toJSON())
+            const newStory = story.toJSON();
+            const user = User.findByPk(newStory.userId)
+            newStory.user = user;
+            storyList.push(newStory)
+
         });
 
 
@@ -63,7 +71,11 @@ router.get('/:storyId', async (req, res) => {
         where: {
             id: req.params.storyId
         },
-        include: [{ model: User }]
+        include: [
+            { model: User },
+            { model: Clap },
+
+        ]
     })
 
     if (!story) {
@@ -117,15 +129,15 @@ router.get('/:storyId/comments', requireAuth, async (req, res) => {
 router.post('/', requireAuth, async (req, res) => {
 
     const { title, body, image } = req.body;
-        const story = await Story.create({
-            userId: req.user.id,
-            title,
-            body,
-            image,
-        })
-        story.save();
-        res.status(201);
-        res.json(story)
+    const story = await Story.create({
+        userId: req.user.id,
+        title,
+        body,
+        image,
+    })
+    story.save();
+    res.status(201);
+    res.json(story)
 })
 
 // Create a Comment for a Stpry based on the Story's id
@@ -154,15 +166,15 @@ router.post('/:storyId/comments', requireAuth, async (req, res) => {
         // const errors = validateNewReview(req.body);
         // if (errors.length === 0) {
 
-            const { comment } = req.body;
-            const storyComment = await Comment.create({
-                storyId: req.params.storyId,
-                userId: req.user.id,
-                comment
-            })
-            storyComment.save();
-            res.status(201);
-            res.json(storyComment)
+        const { comment } = req.body;
+        const storyComment = await Comment.create({
+            storyId: req.params.storyId,
+            userId: req.user.id,
+            comment
+        })
+        storyComment.save();
+        res.status(201);
+        res.json(storyComment)
         // } else {
         //     res.status(400);
         //     const errResponse = {};
@@ -196,13 +208,13 @@ router.put('/:storyId', requireAuth, async (req, res) => {
             })
         }
 
-            const { title, body, image } = req.body;
-            story.title = title;
-            story.body = body;
-            story.image = image;
-            story.save();
-            res.status(201);
-            res.json(story)
+        const { title, body, image } = req.body;
+        story.title = title;
+        story.body = body;
+        story.image = image;
+        story.save();
+        res.status(201);
+        res.json(story)
     }
 
     res.status(404)
@@ -236,6 +248,36 @@ router.delete('/:storyId', requireAuth, async (req, res) => {
             message: "story couldn't be found",
             statusCode: 404
         })
+    }
+})
+
+// Increment claps
+router.post('/:storyId/clap', async (req, res) => {
+    const userClap = await Clap.findOne({
+        where: {
+            storyId: req.params.storyId,
+            userId: req.user.id
+        },
+    });
+    if (userClap) {
+        if (userClap.count < 50) {
+            userClap.count = userClap.count + 1;
+            userClap.save();
+            res.status(201);
+            res.json({ storyId: userClap.storyId, updated: true })
+        } else {
+            res.status(201);
+            res.json({ storyId: userClap.storyId, updated: false })
+        }
+    } else {
+        const newClap = await Clap.create({
+            storyId: req.params.storyId,
+            userId: req.user.id,
+            count: 1
+        })
+        newClap.save();
+        res.status(201);
+        res.json({ storyId: userClap.storyId, updated: true })
     }
 })
 

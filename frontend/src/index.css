@@ -516,11 +516,63 @@ a.story-thumb-link {
 .story-thumb-meta {
     margin-top: 25px;
     font-size: 13px;
-    justify-self: flex-end;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    position: relative;
 }
 
 .story-thumb-img {
     padding: 20px;
     width: 180px;
     flex-shrink: 0;
+}
+
+.fa-hands-clapping {
+    margin-right: 5px;
+}
+
+.fa-comment {
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.clap-icon {
+    font-size: 16px;
+    color: #757575;
+    margin-right: 6px;
+}
+
+.clap-icon:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.clap-total-count {
+    color: #757575;
+}
+
+.clap-total-count:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.clap-count-display {
+    position: absolute;
+    top: -40px;
+    left: -10px;
+    color: white;
+    background: black;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
+
+.clap-count-display.show {
+    opacity: 1;
+    transition: opacity 1000ms ease-out;
 }
