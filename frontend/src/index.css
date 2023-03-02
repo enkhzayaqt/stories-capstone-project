@@ -580,3 +580,8 @@ a.story-thumb-link {
     opacity: 1;
     transition: opacity 1000ms ease-out;
 }
+
+
+.asterisk {
+    color: red;
+}

@@ -23,7 +23,7 @@ const EditStory = () => {
                 userId: user.id,
                 title,
                 body,
-                image
+                image: image? image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
             };
 
             const editedStory = await dispatch(editStoryThunk(newStory, storyId));
@@ -45,7 +45,6 @@ const EditStory = () => {
         if (title?.length < 3 || title?.length > 80) errors.push("Title must be between 3 to 80 characters")
         if (body?.length === 0) errors.push("Please enter a body");
         if (body?.length < 30 || title?.length > 2000) errors.push("Body must be between 30 to 2000 characters")
-        if (image?.length === 0) errors.push("Please enter a image url");
         setErrors(errors);
         if (errors.length > 0) return false;
         else return true;
@@ -60,7 +59,7 @@ const EditStory = () => {
             <h1>Edit Story</h1>
             <ul className="error-container">{errors.map((error) => <li key={error}>{error}</li>)}</ul>
             <form onSubmit={handleSubmit}>
-                <label> Title:
+                <label> Title: <span className="asterisk">*</span>
                     <input className="input"
                         type="text"
                         placeholder="title"
@@ -68,7 +67,7 @@ const EditStory = () => {
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </label>
-                <label> Body:
+                <label> Body: <span className="asterisk">*</span>
                     <input className="input"
                         type="text"
                         placeholder="body"

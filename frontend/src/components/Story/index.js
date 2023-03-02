@@ -19,15 +19,18 @@ const Story = (props) => {
     }, [sessionUser, Claps]);
 
     const handleClap = () => {
-        setCounterClass("clap-count-display show");
-        if (userClapsCount < 50) {
-            dispatch(incrementClapThunk(id));
-            setTotalClaps(totalClaps + 1);
-            setUserClapsCount(userClapsCount + 1)
+        if (sessionUser) {
+            setCounterClass("clap-count-display show");
+            if (userClapsCount < 50) {
+                dispatch(incrementClapThunk(id));
+                setTotalClaps(totalClaps + 1);
+                setUserClapsCount(userClapsCount + 1)
+            }
+            setTimeout(() => {
+                setCounterClass("clap-count-display");
+            }, 1000);
         }
-        setTimeout(() => {
-            setCounterClass("clap-count-display");
-        }, 1000);
+
     }
 
 

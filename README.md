@@ -21,10 +21,15 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
+## Project title: Stories
+
 ## About The Project
 
 [Stories](https://stories-04tb.onrender.com/) is a clone of Medium.com. Stories allows users to find stories that they are interested. Users can also write their own stories.
+![Main page]()
 
+### Live Link:
+[Stories](https://stories-04tb.onrender.com/)
 
 ### Wiki links
 
