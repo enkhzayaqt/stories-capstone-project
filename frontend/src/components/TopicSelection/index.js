@@ -5,7 +5,7 @@ const TopicSelection = () => {
     return (
         <div className="topic-selection-container">
             <div className="topic-selections">
-                topic, politic, science
+                4th feature: tags will display here!
             </div>
         </div>
     );

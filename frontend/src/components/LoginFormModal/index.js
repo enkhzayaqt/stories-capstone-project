@@ -33,7 +33,7 @@ function LoginFormModal() {
           ))}
         </ul>
         <label>
-          Username or Email
+          Username or Email <span className="asterisk">*</span>
           <input className="input"
             type="text"
             value={credential}
@@ -42,7 +42,7 @@ function LoginFormModal() {
           />
         </label>
         <label>
-          Password
+          Password <span className="asterisk">*</span>
           <input className="input"
             type="password"
             value={password}

@@ -55,7 +55,7 @@ const CreateStory = () => {
             <form onSubmit={handleSubmit}>
                 <div className="create-story-content">
                     <div className="column">
-                        <label> Title:
+                        <label> Title: <span className="asterisk">*</span>
                             <input className="input"
                                 type="text"
                                 placeholder="title"
@@ -64,7 +64,7 @@ const CreateStory = () => {
                                 required
                             />
                         </label>
-                        <label> Body:
+                        <label> Body: <span className="asterisk">*</span>
                             <input className="input"
                                 type="text"
                                 placeholder="body"
