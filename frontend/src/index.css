@@ -585,3 +585,26 @@ a.story-thumb-link {
 .asterisk {
     color: red;
 }
+
+#footer {
+    height: 100px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+#footer a{
+    font-size: 25px;
+    color: white;
+    margin: 0 5px;
+}
+
+#about-me a {
+    margin-left: 10px;
+    color: black;
+}
+
+.footer-title {
+    margin-bottom: 8px;
+}

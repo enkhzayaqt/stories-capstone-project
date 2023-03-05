@@ -21,7 +21,7 @@ const CreateStory = () => {
                 userId: user.id,
                 title,
                 body,
-                image: image? image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
+                image: image? image : "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2020/10/Write-a-Story.jpg"
             };
             const createdStory = await dispatch(createStoryThunk(newStory));
             history.push(`/stories/${createdStory.id}`)
