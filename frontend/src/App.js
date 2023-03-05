@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import CreateStory from "./components/CreateStory";
 import HeaderBar from "./components/HeaderBar";
+import Footer from "./components/Footer"
 import StoryDetails from "./components/StoryDetails";
 import EditStory from "./components/EditStory";
 import * as sessionActions from "./store/session";
@@ -35,6 +36,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer/>
     </>
   );
 }
