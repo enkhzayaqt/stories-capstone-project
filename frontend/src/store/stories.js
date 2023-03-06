@@ -70,6 +70,25 @@ export const createStoryThunk = (userInput) => async (dispatch) => {
     }
 }
 
+export const editStoryThunk = (input, storyId) => async (dispatch) => {
+    const { image, title, body } = input;
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("body", body);
+    if (image) formData.append("image", image);
+
+    const response = await csrfFetch(`/api/stories/${storyId}`, {
+        method: 'PUT',
+        headers: { "Content-Type": "multipart/form-data" },
+        body: formData
+    })
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(editStory(data));
+        return data;
+    }
+}
+
 export const deleteStoryThunk = (storyId) => async (dispatch) => {
     const response = await csrfFetch(`/api/stories/${storyId}`, {
         method: 'DELETE',
@@ -81,18 +100,6 @@ export const deleteStoryThunk = (storyId) => async (dispatch) => {
     }
 }
 
-export const editStoryThunk = (input, storyId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/stories/${storyId}`, {
-        method: 'PUT',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input)
-    })
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(editStory(data));
-        return data;
-    }
-}
 
 // Initial State
 const initialState = {

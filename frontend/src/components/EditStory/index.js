@@ -23,7 +23,7 @@ const EditStory = () => {
                 userId: user.id,
                 title,
                 body,
-                image: image? image : "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2020/10/Write-a-Story.jpg"
+                image
             };
 
             const editedStory = await dispatch(editStoryThunk(newStory, storyId));
@@ -33,6 +33,13 @@ const EditStory = () => {
             }
         }
     }
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImage(file)
+        }
+    };
 
     const cancel = (e) => {
         e.preventDefault();
@@ -76,12 +83,7 @@ const EditStory = () => {
                     />
                 </label>
                 <label> Image:
-                    <input className="input"
-                        type="text"
-                        placeholder="image"
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}
-                    />
+                    <input className="input" type="file" onChange={updateFile} />
                 </label>
 
                 <button className="btn btn-blue" style={{ marginRight: 10 }} onClick={(e) => cancel(e)}>Cancel</button>

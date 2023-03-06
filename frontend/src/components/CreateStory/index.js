@@ -84,14 +84,6 @@ const CreateStory = () => {
                         <label> Image:
                             <input className="input" type="file" onChange={updateFile} />
                         </label>
-                        {/* <label> Image:
-                            <input className="input"
-                                type="url"
-                                placeholder="Image"
-                                value={image}
-                                onChange={(e) => setImage(e.target.value)}
-                            />
-                        </label> */}
                     </div>
                     <div className="column">
 
