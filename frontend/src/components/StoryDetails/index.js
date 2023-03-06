@@ -99,7 +99,7 @@ const StoryDetails = () => {
                             }
                         </div>
                     </div>
-                    <div className="review-body">
+                    <div id="comment-section" className="review-body">
                         {
                             storyComments?.map((comment, idx) => {
                                 const commentDate = new Date(comment.createdAt);
