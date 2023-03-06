@@ -202,7 +202,7 @@ router.post('/:storyId/comments', requireAuth, async (req, res) => {
 
 
 // Edit a Story
-router.put('/:storyId', requireAuth, async (req, res) => {
+router.put('/:storyId', singleMulterUpload("image"), requireAuth, async (req, res) => {
     const story = await Story.findByPk(req.params.storyId);
 
     if (story) {
@@ -215,7 +215,12 @@ router.put('/:storyId', requireAuth, async (req, res) => {
             })
         }
 
-        const { title, body, image } = req.body;
+        const { title, body } = req.body;
+        let image = "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2020/10/Write-a-Story.jpg";
+
+        if (req.file) {
+            image = await singlePublicFileUpload(req.file);
+        }
         story.title = title;
         story.body = body;
         story.image = image;
