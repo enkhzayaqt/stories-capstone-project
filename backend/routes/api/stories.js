@@ -3,6 +3,7 @@ const { Story, User, Comment, Clap } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { validateQueryParams } = require('../../utils/validation')
 const { Op } = require('sequelize');
+const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 const router = express.Router();
 
 // Get all stories
@@ -11,7 +12,7 @@ router.get('/', async (req, res) => {
     const errors = validateQueryParams(req.query);
     if (errors.length === 0) {
         if (!page) page = 1;
-        if (!size) size = 10;
+        if (!size) size = 100;
         page = parseInt(page);
         size = parseInt(size);
 
@@ -126,9 +127,15 @@ router.get('/:storyId/comments', requireAuth, async (req, res) => {
 
 
 // Create a Story
-router.post('/', requireAuth, async (req, res) => {
+router.post('/', singleMulterUpload("image"), requireAuth, async (req, res) => {
 
-    const { title, body, image } = req.body;
+    const { title, body } = req.body;
+    let image = "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2020/10/Write-a-Story.jpg";
+
+    if (req.file) {
+        image = await singlePublicFileUpload(req.file);
+    }
+
     const story = await Story.create({
         userId: req.user.id,
         title,
