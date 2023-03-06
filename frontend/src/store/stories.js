@@ -52,10 +52,16 @@ export const getStoryDetailsThunk = (storyId) => async (dispatch) => {
 };
 
 export const createStoryThunk = (userInput) => async (dispatch) => {
+    const { image, title, body } = userInput;
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("body", body);
+    if (image) formData.append("image", image);
+
     const response = await csrfFetch('/api/stories/', {
         method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userInput)
+        headers: { "Content-Type": "multipart/form-data" },
+        body: formData
     });
     if (response.ok) {
         const data = await response.json();

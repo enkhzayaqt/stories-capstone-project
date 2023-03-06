@@ -21,12 +21,19 @@ const CreateStory = () => {
                 userId: user.id,
                 title,
                 body,
-                image: image? image : "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2020/10/Write-a-Story.jpg"
+                image
             };
             const createdStory = await dispatch(createStoryThunk(newStory));
             history.push(`/stories/${createdStory.id}`)
         }
     }
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImage(file)
+        }
+    };
 
     const validate = () => {
         const errors = [];
@@ -65,22 +72,26 @@ const CreateStory = () => {
                             />
                         </label>
                         <label> Body: <span className="asterisk">*</span>
-                            <input className="input"
-                                type="text"
+                            <textarea
+                                className="input"
                                 placeholder="body"
                                 value={body}
+                                rows="3"
                                 onChange={(e) => setBody(e.target.value)}
                                 required
                             />
                         </label>
                         <label> Image:
+                            <input className="input" type="file" onChange={updateFile} />
+                        </label>
+                        {/* <label> Image:
                             <input className="input"
                                 type="url"
                                 placeholder="Image"
                                 value={image}
                                 onChange={(e) => setImage(e.target.value)}
                             />
-                        </label>
+                        </label> */}
                     </div>
                     <div className="column">
 

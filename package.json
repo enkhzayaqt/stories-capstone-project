@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/enkhzayaqt/stories-capstone-project/issues"
   },
-  "homepage": "https://github.com/enkhzayaqt/stories-capstone-project#readme"
+  "homepage": "https://github.com/enkhzayaqt/stories-capstone-project#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1328.0",
+    "multer": "^1.4.5-lts.1"
+  }
 }
