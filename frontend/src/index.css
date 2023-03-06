@@ -418,6 +418,7 @@ a.story-thumb-link {
     list-style: none;
     margin-top: 30px;
     display: flex;
+    flex-direction: column;
 }
 
 .comment-item {
@@ -425,6 +426,7 @@ a.story-thumb-link {
     flex-direction: column;
     width: 50%;
     padding-right: 30px;
+    margin-bottom: 20px;
 }
 
 .comment-item-header {
