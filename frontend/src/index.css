@@ -577,6 +577,9 @@ a.story-thumb-link {
     opacity: 0;
     transition: opacity 200ms ease-in;
 }
+/* 
+ease-in - specifies a transition effect with a slow start
+ease-out - specifies a transition effect with a slow end */
 
 .clap-count-display.show {
     opacity: 1;
