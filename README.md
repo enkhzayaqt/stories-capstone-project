@@ -31,7 +31,7 @@
 ![Create Story page](https://github.com/enkhzayaqt/stories-capstone-project/blob/main/assets/stories_createPage.png)
 
 ### Live Link:
-[Stories](https://stories-04tb.onrender.com/)
+[Stories](https://medium-stories.herokuapp.com/)
 
 ### Wiki links
 
