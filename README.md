@@ -26,10 +26,12 @@
 ## About The Project
 
 [Stories](https://medium-stories.herokuapp.com/) is a clone of Medium.com. Stories allows users to find stories that they are interested. Users can also write their own stories.
-![Main page](https://github.com/enkhzayaqt/stories-capstone-project/blob/main/assets/main-page.png)
+![Main page](https://github.com/enkhzayaqt/stories-capstone-project/blob/main/assets/stories_mainPage.png)
+![Story detail page](https://github.com/enkhzayaqt/stories-capstone-project/blob/main/assets/stories_singlePage.png)
+![Create Story page](https://github.com/enkhzayaqt/stories-capstone-project/blob/main/assets/stories_createPage.png)
 
 ### Live Link:
-[Stories](https://stories-04tb.onrender.com/)
+[Stories](https://medium-stories.herokuapp.com/)
 
 ### Wiki links
 
