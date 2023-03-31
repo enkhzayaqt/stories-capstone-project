@@ -68,7 +68,6 @@ const CreateStory = () => {
                                 placeholder="title"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
-                                required
                             />
                         </label>
                         <label> Body: <span className="asterisk">*</span>
@@ -78,7 +77,6 @@ const CreateStory = () => {
                                 value={body}
                                 rows="3"
                                 onChange={(e) => setBody(e.target.value)}
-                                required
                             />
                         </label>
                         <label> Image:

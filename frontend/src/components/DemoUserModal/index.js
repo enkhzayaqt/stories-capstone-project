@@ -39,7 +39,6 @@ function DemoUserLogin() {
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
-            required
           />
         </label>
         <label>
@@ -49,7 +48,6 @@ function DemoUserLogin() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
         </label>
         <button className="btn btn-primary margin-top-10" type="submit">
