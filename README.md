@@ -25,7 +25,7 @@
 
 ## About The Project
 
-[Stories](https://medium-stories.herokuapp.com/) is a clone of Medium.com. Stories allows users to find stories that they are interested. Users can also write their own stories.
+[Stories](https://medium-stories.herokuapp.com/) is a single-page full-stack web application inspired by Medium.com. Stories allows users to find stories that they are interested. Users can also write their own stories.
 ![Main page](https://github.com/enkhzayaqt/stories-capstone-project/blob/main/assets/stories_mainPage.png)
 ![Story detail page](https://github.com/enkhzayaqt/stories-capstone-project/blob/main/assets/stories_singlePage.png)
 ![Create Story page](https://github.com/enkhzayaqt/stories-capstone-project/blob/main/assets/stories_createPage.png)
