@@ -54,7 +54,6 @@ function CommentFormModal({ storyId, callbackClose }) {
             className="textarea"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            required
           />
         </label>
         <button type="submit" className="btn btn-primary margin-top-10">Submit</button>

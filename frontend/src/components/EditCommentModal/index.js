@@ -45,7 +45,6 @@ function EditCommentModal(props) {
             className="textarea"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            required
           />
         </label>
         <button className="btn btn-blue" onClick={() => closeModal()}>Cancel</button>
