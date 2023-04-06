@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Story.belongsTo(models.User, { foreignKey: 'userId' });
       Story.hasMany(models.Comment, { foreignKey: 'storyId', onDelete: 'CASCADE', hooks: true });
-      Story.hasMany(models.Clap, {foreignKey: 'storyId', onDelete: 'CASCADE', hooks: true })
+      Story.hasMany(models.Clap, { foreignKey: 'storyId', onDelete: 'CASCADE', hooks: true });
+      Story.belongsToMany(models.Tag, { through: 'StoryTags' });
     }
   }
   Story.init({
