@@ -216,11 +216,12 @@ router.put('/:storyId', singleMulterUpload("image"), requireAuth, async (req, re
         }
 
         const { title, body } = req.body;
-        let image = "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2020/10/Write-a-Story.jpg";
-
+        // let image = "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2020/10/Write-a-Story.jpg";
+        let image = story.image;
         if (req.file) {
             image = await singlePublicFileUpload(req.file);
         }
+
         story.title = title;
         story.body = body;
         story.image = image;
