@@ -1,4 +1,3 @@
-/* Site wide styles */
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -174,16 +173,10 @@ button[disabled] {
 .dropdown-button {
     cursor: pointer;
     margin-top: -5px;
-    /* border: 1px solid #111; */
-    /* border-radius: 50px; */
     padding: 5px 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.dropdown-button:hover {
-    /* box-shadow: 0 0 6px -2px black; */
 }
 
 #dropdown-profile-pic {
@@ -331,7 +324,6 @@ a.story-thumb-link {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /* align-items: center; */
     gap: 20px 45px;
     width: 960px;
     margin: 0 auto;
@@ -477,7 +469,6 @@ a.story-thumb-link {
     margin: 10px
 }
 
-
 .story-detail-title {
     display: flex;
     flex-direction: row;
@@ -578,15 +569,11 @@ a.story-thumb-link {
     opacity: 0;
     transition: opacity 200ms ease-in;
 }
-/*
-ease-in - specifies a transition effect with a slow start
-ease-out - specifies a transition effect with a slow end */
 
 .clap-count-display.show {
     opacity: 1;
     transition: opacity 1000ms ease-out;
 }
-
 
 .asterisk {
     color: red;
