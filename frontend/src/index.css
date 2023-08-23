@@ -509,6 +509,7 @@ a.story-thumb-link {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    word-break: break-all;
 }
 
 .story-thumb-meta {
