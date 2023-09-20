@@ -55,11 +55,7 @@ const Story = (props) => {
             </div>
             <a href={`/stories/${id}`} className="story-thumb-link">
                 <div className="story-thumb-img">
-                    {image !== 'no image yet' ?
-                        <img src={image} className="thumb-img" alt="Image" />
-                        :
-                        <div className="no-image-container"><span>No Image</span></div>
-                    }
+                    <img src={image} className="thumb-img" alt="Image" />
                 </div>
             </a>
         </div>
