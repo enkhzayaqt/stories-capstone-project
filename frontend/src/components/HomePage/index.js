@@ -3,7 +3,6 @@ import Stories from "../Stories";
 import TopicSelection from "../TopicSelection";
 
 const HomePage = () => {
-
     return (
         <div className="home-page">
             <Stories />
