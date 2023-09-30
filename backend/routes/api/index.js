@@ -13,11 +13,9 @@ router.use('/users', usersRouter);
 router.use('/stories', storiesRouter);
 router.use('/comments', commentRouter);
 
-router.post('/test', (req, res) => {
-  res.json({ requestBody: req.body });
-});
-
-
+// router.post('/test', (req, res) => {
+//   res.json({ requestBody: req.body });
+// });
 
 // GET /api/set-token-cookie
 const { setTokenCookie } = require('../../utils/auth.js');

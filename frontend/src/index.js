@@ -1,8 +1,8 @@
 import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'; // makes the Redux store available to any nested components that need to access the Redux store
+import { BrowserRouter } from 'react-router-dom'; // It enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.
 import App from './App';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
