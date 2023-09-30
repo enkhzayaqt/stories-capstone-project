@@ -2,6 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     margin: 0;
+    background-color: r#f8f8f8;
 }
 
 h2 {
@@ -276,7 +277,6 @@ button[disabled] {
 a.story-thumb-link {
     color: initial;
     text-decoration: none;
-    background-color: white;
     border-radius: 15px;
 }
 
