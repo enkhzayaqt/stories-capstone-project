@@ -142,6 +142,8 @@ button[disabled] {
 
 .topic-selection-container .topic-selections {
     width: 250px;
+    font-size: small;
+    font-style: italic;
 }
 
 .create-story-container {
